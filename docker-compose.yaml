@@ -1,0 +1,19 @@
+services:
+  service_image_ocr:
+    container_name: service_image_ocr
+    build:
+        context: .
+        dockerfile: Dockerfile
+    ports:
+      - "10011:10011"
+    environment:
+      - PORT=10011
+      - DEBUG=true
+    volumes:
+      - .:/app
+    networks:
+        - image_processing_network
+    command: ["python", "_server.py"]
+networks:
+    image_processing_network:
+        driver: bridge

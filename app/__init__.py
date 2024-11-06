@@ -16,15 +16,22 @@ def create_app():
         os.mkdir('logs')
 
     # Logging
-    handler = TimedRotatingFileHandler(app.config['LOG_FILE'], when="midnight", interval=1)
+    # handler = TimedRotatingFileHandler(app.config['LOG_FILE'], when="S", interval=10, backupCount=7)
+    handler = TimedRotatingFileHandler(app.config['LOG_FILE'], when="midnight", interval=1, backupCount=7)
     handler.setLevel(logging.INFO)
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
     handler.setFormatter(formatter)
     app.logger.addHandler(handler)
+
     app.logger.info('Starting server...')
 
     @app.get('/')
     def index():
         return jsonify({"message": "Server is running"}), 200
 
+    # Register blueprints
+    from  .routes import ocr_route
+    app.register_blueprint(ocr_route, url_prefix='/api/ocr')
+
+    # return app
     return app
