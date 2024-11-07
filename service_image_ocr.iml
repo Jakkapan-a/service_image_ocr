@@ -6,4 +6,8 @@
     <orderEntry type="jdk" jdkName="Python 3.12 (service_image_ocr)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="PackageRequirementsSettings">
+    <option name="requirementsPath" value="D:\E-Lead\Project\we-automation-processing\service_image_ocr\requirements.txt" />
+    <option name="versionSpecifier" value="Strong equality (==x.y.z)" />
+  </component>
 </module>
